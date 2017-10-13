@@ -17,17 +17,23 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.save
 
+    flash.notice = "Article '#{@article.title}' Added!"
+
     redirect_to article_path(@article)
   end
 
   def update
     @article.update(article_params)
 
+    flash.notice = "Article '#{@article.title}' Updated!"
+
     redirect_to article_path(@article)
   end
 
   def destroy
     @article.delete
+
+    flash.notice = "Article '#{@article.title}' Deleted!"
 
     redirect_to articles_path
   end
